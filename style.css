@@ -275,12 +275,17 @@ header {
 .greeting {
 	display: flex;
 	flex-direction: row;
+	flex-wrap: wrap;
 	justify-content: space-between;
 	gap: 6rem;
 }
 
+.greeting img {
+	max-width: 45%;
+}
+
 .text {
-	width: 100%;
+	width: 45%;
 	max-width: 43rem;
 }
 
@@ -295,38 +300,52 @@ li {
 	color: var(--white);
 	line-height: 180%;
 }
-
-.cards {
-	overflow: hidden;
-	width: 80%;
-}
-
-.services-cards {
+.carousel {
+	margin: 3rem auto;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	justify-content: center;
+	gap: 5rem;
+	min-width: 60rem;
+	padding: 0 5rem;
+}
 
+.cards {
+	overflow: hidden;
+	margin: 3rem auto;
+}
+
+.services-cards {
 	gap: 30px;
+	white-space: nowrap;
 	-webkit-overflow-scrolling: touch;
+	transition: all 0.5s ease 0s;
 }
 
 .service-card {
 	display: inline-flex;
 	white-space: normal;
-	transition: 0.4s all;
-	padding: 0 5px;
-	display: flex;
-	flex-direction: column;
-	width: 16rem;
-	height: 17rem;
+	transition: 0.4s all ease-in-out;
+	width: calc(0.25 * (100% - 5rem));
+	aspect-ratio: 1/1.1;
 	border-radius: 2.5rem;
 	background-color: var(--light-gray);
+	margin: 0.5rem;
+}
+
+.service-card:hover {
+	margin: 0 2rem;
+	transform: scale(1.1);
+}
+
+.service-card:hover .service-card-content img {
+	transform: translate(-1rem, -1rem);
 }
 
 .service-card-content img {
 	border-radius: 2.5rem;
-	width: 16rem;
+	width: 100%;
+	transition: 0.4s all ease-in-out;
 }
 
 .service-card-text {
@@ -334,14 +353,20 @@ li {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	margin-top: 0.5rem;
 }
 
 .service-card-text p {
 	color: var(--darkest-gray);
 	font-size: 1rem;
-	font-weight: 500;
+	font-weight: 400;
 }
 
+.controls {
+	cursor: pointer;
+	background-color: transparent;
+	border: none;
+}
 /* страница "История" */
 
 .history-page {
